@@ -31,7 +31,7 @@ if (Form) {
                         <p class="text-md">Humidity 💦</p>
                         <p class=" p-1  text-2xl font-thin">${data.Main.Humidity} %</p>
                     </div>
-                    <div class="drop-shadow-2xl w-[13%] font-thin m-1 p-2 rounded-xl bg-white">
+                    <div class="drop-shadow-2xl w-full md:w-[13%] font-thin m-1 p-2 rounded-xl bg-white">
                         <p class="text-md">Wind Speed 🍃</p>
                         <p class=" p-1  text-2xl font-thin">${data.Wind.Speed} km/hr </p>
                     </div>

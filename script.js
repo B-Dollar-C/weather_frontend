@@ -41,7 +41,7 @@ if (Form) {
                     </div>
                     <div class="drop-shadow-2xl w-full md:w-[13%] font-thin m-1 p-1 rounded-xl bg-white">
                         <p class="text-md">Wind Direction ↗️</p>
-                        <p class=" p-1  text-2xl font-thin"> 12 &deg North </p>
+                        <p class=" p-1  text-2xl font-thin"> ${data.Wind.Deg}&deg</p>
                     </div>
                     <div class="drop-shadow-2xl w-full md:w-[13%] font-thin m-1 p-1 rounded-xl bg-white">
                         <p class="text-md">Sunrise 🌅</p>

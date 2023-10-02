@@ -16,7 +16,7 @@ if (Form) {
                 <div
                     class="absolute top-[30%] md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-semibold text-5xl md:text-7xl font-thin">
                     <h1>${data.Name}</h1>
-                    <h1 class="text-5xl mt-3">1${data.Main.Celsius} &deg;C  |  ${data.Main.Temp} K </h1>
+                    <h1 class="text-5xl mt-3">${data.Main.Celsius} &deg;C  |  ${data.Main.Temp} K </h1>
                 </div>
                 <div class="flex flex-col md:flex-row w-full justify-evenly items center p-3 text-md font-medium">
                     <div class="drop-shadow-2xl w-full md:w-[13%] m-1  font-thin p-2 rounded-xl bg-white">

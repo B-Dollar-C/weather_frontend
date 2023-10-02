@@ -21,6 +21,9 @@
             content-visibility: auto;
           }
         }
+.font-thin {
+    font-weight: 300;
+}
       </style>
     <title>Weather.NAI</title>
     <link rel="stylesheet" href="style.css">
@@ -29,7 +32,7 @@
 <body class="bg-blue-300">
 
     <header class="h-16 md:h-20 flex flex-row justify-between md:p-3 items-center md:mx-3 font-thin">
-        <h1 class="weather-emoji hidden md:block  text-xl font-medium">AkashVani ☀️</h1>
+        <h1 class="weather-emoji md:block  text-xl font-medium">AkashVani ☀️</h1>
         <form id="weatherForm" class="w-96">
             <div class="search-bar w-[24rem] md:w-[25rem] h-11 font-thin">
                 <input type="text" id="cityInput" name="city" required placeholder="Enter City"
@@ -54,8 +57,11 @@
                     </div>
                 </div>
             </div>
+            <div class="md:block mt-[550px] md:mt-36 mx-auto day-time text-xl text-white w-fit mx-auto shadow-2xl drop-shadow-2xl decoration-4 border border-white p-1"
+            id="dayTime" style="margin-top: 0; padding-top: 0;">
+            </div>
         </div>
-       <br><br>
+       <br><br><br><br><br>
         <div id="weatherResultDetail">
         <div class="flex flex-col md:flex-row w-full justify-evenly items center p-3 text-md font-medium">
                     <!-- should be replaced by dynamic data -->
@@ -88,9 +94,6 @@
                         <p class=" p-1 text-2xl font-thin">06:26 PM </p>
                     </div>
                 </div>
-        </div>
-        <div class="hidden md:block mt-[550px] md:mt-36 mx-auto day-time text-xl text-white w-fit mx-auto shadow-2xl drop-shadow-2xl decoration-4 border border-white p-1"
-            id="dayTime">
         </div>
     </main>
 

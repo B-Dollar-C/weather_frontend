@@ -22,6 +22,11 @@ if (Form) {
                     </div>
                 </div>`;
                 weatherResultDetail.innerHTML = `
+                 <div class="google-maps-link">
+    <a href="https://maps.google.com/?q=${data.Name}" target="_blank" rel="noopener noreferrer">
+        <span class="google-maps-icon">🗺️</span> Open in Google Maps
+    </a>
+    </div>
                 <div class="flex flex-col md:flex-row w-full justify-evenly items center p-3 text-md font-medium">
                     <div class="drop-shadow-2xl w-full md:w-[13%] m-1  font-thin p-2 rounded-xl bg-white">
                         <p class="text-md">Weather 🌧️</p>

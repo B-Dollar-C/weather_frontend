@@ -40,8 +40,12 @@ if (Form) {
                         <p class=" p-1  text-2xl font-thin"> 12 &deg North </p>
                     </div>
                     <div class="drop-shadow-2xl w-full md:w-[13%] font-thin m-1 p-1 rounded-xl bg-white">
-                        <p class="text-md">Sunrise 🌄</p>
+                        <p class="text-md">Sunrise 🌅</p>
                         <p class=" p-1  text-2xl font-thin">${data.Sys.SunriseTime} am</p>
+                    </div>
+                    <div class="drop-shadow-2xl w-full md:w-[13%] font-thin m-1 p-1 rounded-xl bg-white">
+                        <p class="text-md">Sunset 🌄</p>
+                        <p class=" p-1  text-2xl font-thin">${data.Sys.SunsetTime} am</p>
                     </div>
             </div>`;
                 let url = '';

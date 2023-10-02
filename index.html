@@ -44,14 +44,17 @@
     <main class="md:h-[93vh] h-[110vh]">
         <div class="weather-info h-72 md:h-96 w-[80vw] md:w-[90vw] mx-auto m-3">
             <img id="weather-bg" src="./assets/scatteredCloud.jpg"
-                class="weatherBg bg-center h-full w-full rounded-xl" />
+                class="weatherBg bg-center h-full w-full rounded-xl" style="height: 130%;"/>
             <div id="weatherResult">
                 <div
                     class="absolute top-[30%] md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-semibold text-5xl md:text-7xl font-thin">
                     <h1>Mumbai</h1>
                     <h1 class="text-3xl md:text-5xl mt-3">29.99 °C  |  303.14 K</h1>
                 </div>
-                <div class="flex flex-col md:flex-row w-full justify-evenly items center p-3 text-md font-medium">
+            </div>
+        </div>
+        <div id="weatherResult">
+        <div class="flex flex-col md:flex-row w-full justify-evenly items center p-3 text-md font-medium">
                     <!-- should be replaced by dynamic data -->
                     <div class="drop-shadow-2xl w-full md:w-[13%] m-1  font-thin p-2 rounded-xl bg-white">
                         <p class="text-md">Weather 🌧️</p>
@@ -82,7 +85,6 @@
                         <p class=" p-1 text-2xl font-thin">06:26 PM </p>
                     </div>
                 </div>
-            </div>
         </div>
         <div class="hidden md:block mt-[550px] md:mt-36 mx-auto day-time text-xl text-white w-fit mx-auto shadow-2xl drop-shadow-2xl decoration-4 border border-white p-1"
             id="dayTime">

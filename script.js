@@ -45,11 +45,11 @@ if (Form) {
                     </div>
                     <div class="drop-shadow-2xl w-full md:w-[13%] font-thin m-1 p-1 rounded-xl bg-white">
                         <p class="text-md">Sunrise 🌅</p>
-                        <p class=" p-1  text-2xl font-thin">${data.Sys.SunriseTime} am</p>
+                        <p class=" p-1  text-2xl font-thin">${data.Sys.SunriseTime}</p>
                     </div>
                     <div class="drop-shadow-2xl w-full md:w-[13%] font-thin m-1 p-1 rounded-xl bg-white">
                         <p class="text-md">Sunset 🌄</p>
-                        <p class=" p-1  text-2xl font-thin">${data.Sys.SunsetTime} am</p>
+                        <p class=" p-1  text-2xl font-thin">${data.Sys.SunsetTime}</p>
                     </div>
             </div>`;
                 let url = '';

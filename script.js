@@ -10,6 +10,7 @@ const direction = document.querySelector(".direction");
 const sunrise = document.querySelector(".rise");
 const sunset = document.querySelector(".set");
 const state = document.querySelector(".btn-text");
+const cityName = document.querySelector(".city_name");
 if (Form) {
     Form.addEventListener("submit", function (event) {
         event.preventDefault();
@@ -23,6 +24,7 @@ if (Form) {
             .then(response => response.json())
             .then(data => {
                 // dynamic data load
+                cityName.innerHTML = data.Name;
                 latti.innerHTML = data.Coord.Lat;
                 longi.innerHTML = data.Coord.Lon;
                 weather.innerHTML = data.Weather[0].Description;

@@ -1,4 +1,14 @@
 const Form = document.getElementById("weatherForm");
+
+const latti = document.querySelector(".latti");
+const longi = document.querySelector(".longi");
+const weather = document.querySelector(".weather");
+const pressure = document.querySelector(".pressure");
+const humidity = document.querySelector(".humidity");
+const speed = document.querySelector(".speed");
+const direction = document.querySelector(".direction");
+const sunrise = document.querySelector(".rise");
+const sunset = document.querySelector(".set");
 if (Form) {
     Form.addEventListener("submit", function (event) {
         event.preventDefault();
@@ -11,55 +21,18 @@ if (Form) {
         fetch(`https://akashvani.onrender.com/weather/${city}`)
             .then(response => response.json())
             .then(data => {
-                // const latitudeWithEmoji = `Latitude: ${data.Coord.Lat} 🌐`;
-                // const longitudeWithEmoji = `Longitude: ${data.Coord.Lon} 🌏`;
-                weatherResult.innerHTML = `
-                <div
-                    class="absolute top-[30%] md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-semibold text-5xl md:text-7xl font-thin">
-                    <div class="text-center">
-                       <h1>${data.Name}</h1>
-                       <h1 class="text-5xl mt-3">${data.Main.Celsius} &deg;C  |  ${data.Main.Temp} K </h1>
-                    </div>
-                </div>`;
-                weatherResultDetail.innerHTML = `
-                 <div style="text-align: center;">
-           <div class="google-maps-link">
-    <div class="location-gif location-outline"></div>
-<a href="https://maps.google.com/?q=${data.Name}" target="_blank" rel="noopener noreferrer" style="text-align: center;">
-         Open in Google Maps
-    </a>
-    </div>
-</div>
-                <div class="flex flex-col md:flex-row w-full justify-evenly items center p-3 text-md font-medium">
-                    <div class="drop-shadow-2xl w-full md:w-[13%] m-1  font-thin p-2 rounded-xl bg-white">
-                        <p class="text-md">Weather 🌧️</p>
-                        <p class="temp p-1   text-2xl font-thin"> ${data.Weather[0].Description}</p>
-                    </div>
-                    <div class="drop-shadow-2xl w-full md:w-[13%] font-thin m-1 p-2 rounded-xl bg-white">
-                        <p class="text-md">Pressure 🦾</p>
-                        <p class=" p-1  text-2xl font-thin">${data.Main.Pressure} mm </p>
-                    </div>
-                    <div class="drop-shadow-2xl w-full md:w-[13%] font-thin m-1 p-2 rounded-xl bg-white">
-                        <p class="text-md">Humidity 💦</p>
-                        <p class=" p-1  text-2xl font-thin">${data.Main.Humidity} %</p>
-                    </div>
-                    <div class="drop-shadow-2xl w-full md:w-[13%] font-thin m-1 p-2 rounded-xl bg-white">
-                        <p class="text-md">Wind Speed 🍃</p>
-                        <p class=" p-1  text-2xl font-thin">${data.Wind.Speed} km/hr </p>
-                    </div>
-                    <div class="drop-shadow-2xl w-full md:w-[13%] font-thin m-1 p-1 rounded-xl bg-white">
-                        <p class="text-md">Wind Direction ↗️</p>
-                        <p class=" p-1  text-2xl font-thin"> ${data.Wind.Deg}&deg</p>
-                    </div>
-                    <div class="drop-shadow-2xl w-full md:w-[13%] font-thin m-1 p-1 rounded-xl bg-white">
-                        <p class="text-md">Sunrise 🌅</p>
-                        <p class=" p-1  text-2xl font-thin">${data.Sys.SunriseTime}</p>
-                    </div>
-                    <div class="drop-shadow-2xl w-full md:w-[13%] font-thin m-1 p-1 rounded-xl bg-white">
-                        <p class="text-md">Sunset 🌄</p>
-                        <p class=" p-1  text-2xl font-thin">${data.Sys.SunsetTime}</p>
-                    </div>
-            </div>`;
+                // dynamic data load
+                latti.innerHTML = data.Coord.Lat;
+                longi.innerHTML = data.Coord.Lon;
+                weather.innerHTML = data.Weather[0].Description;
+                pressure.innerHTML = data.Main.Pressure;
+                humidity.innerHTML = data.Main.Humidity;
+                speed.innerHTML = data.Wind.Speed;
+                direction.innerHTML = data.Wind.Deg;
+                sunrise.innerHTML = data.Sys.SunriseTime;
+                sunset.innerHTML = data.Sys.SunsetTime;
+
+                // dynamic bg 
                 let url = '';
                 let Image = document.querySelector('#weather-bg');
                 if (data.Weather[0].Description.includes('rainy')) {
@@ -89,6 +62,15 @@ function updateDayTime() {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
     const formattedDate = now.toLocaleDateString('en-US', options);
     document.getElementById("dayTime").textContent = formattedDate;
+}
+
+function copyLatti() {
+    const res = navigator.clipboard.writeText(latti.innerText);
+    console.log(res)
+}
+function copyLon() {
+    const res = navigator.clipboard.writeText(longi.innerText);
+    console.log(res)
 }
 
 updateDayTime();

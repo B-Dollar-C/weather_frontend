@@ -9,10 +9,11 @@ const speed = document.querySelector(".speed");
 const direction = document.querySelector(".direction");
 const sunrise = document.querySelector(".rise");
 const sunset = document.querySelector(".set");
+const state = document.querySelector(".btn-text");
 if (Form) {
     Form.addEventListener("submit", function (event) {
         event.preventDefault();
-
+        state.innerHTML = "Loading";
         const city = document.getElementById("cityInput").value;
         const weatherResult = document.getElementById("weatherResult");
         const weatherResultDetail = document.getElementById("weatherResultDetail");
@@ -49,10 +50,15 @@ if (Form) {
                     url = "./assets/mist.jpg"
                 }
                 Image.src = url;
+                state.innerHTML = "Get Weather";
             })
             .catch(error => {
+                state.innerHTML = "Error";
                 console.error("Error:", error);
                 weatherResult.innerHTML = "An error occurred while fetching weather data.";
+                setTimeout(() => {
+                    state.innerHTML = "Get Weather";
+                }, 2000)
             });
     });
 }

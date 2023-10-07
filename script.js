@@ -12,6 +12,8 @@ const sunset = document.querySelector(".set");
 const state = document.querySelector(".btn-text");
 const cityName = document.querySelector(".city_name");
 const location_URL = document.querySelector("#location_URL");
+const copy_logo_lon = document.querySelector(".copy_logo_lon");
+const copy_logo_latt = document.querySelector(".copy_logo_latt");
 if (Form) {
     Form.addEventListener("submit", function (event) {
         event.preventDefault();
@@ -77,11 +79,17 @@ function updateDayTime() {
 
 function copyLatti() {
     const res = navigator.clipboard.writeText(latti.innerText);
-    console.log(res)
+    copy_logo_latt.src = "./assets/icons8-done.gif";
+    setTimeout(() => {
+        copy_logo_latt.src = "https://static.vecteezy.com/system/resources/thumbnails/000/423/339/small/Multimedia__2850_29.jpg"
+    }, 1000)
 }
 function copyLon() {
     const res = navigator.clipboard.writeText(longi.innerText);
-    console.log(res)
+    copy_logo_lon.src = "./assets/icons8-done.gif";
+    setTimeout(() => {
+        copy_logo_lon.src = "https://static.vecteezy.com/system/resources/thumbnails/000/423/339/small/Multimedia__2850_29.jpg"
+    }, 1000)
 }
 
 updateDayTime();

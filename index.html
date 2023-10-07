@@ -1,228 +1,193 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Weather.NAI</title>
-</head>
-<style>
-
-
-.navbar {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
         }
-
-        .navbar h1 {
-            margin: 0;
-            font-family: 'Quicksand'; /* Use a suitable font family */
-           font-size: 32px; /* Adjust the size as needed */
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+          .content-auto {
+            content-visibility: auto;
+          }
         }
+.font-thin {
+    font-weight: 300;
+}
+.location-gif {
+  width: 30px; /* Adjust the width as needed */
+  height: 30px; /* Adjust the height as needed */
+  background-image: url('https://cliply.co/wp-content/uploads/2019/03/371903340_LOCATION_MARKER_400.gif'); /* Replace 'your-location.gif' with the path to your GIF */
+  background-size: cover;
+  animation: locationPulse 2s infinite alternate; /* Adjust animation properties as needed */
+}
 
-        .weather-emoji {
-            font-size: 24px; /* Adjust the size as needed */
-            margin-left: 10px; /* Add spacing between the title and emoji */
+@keyframes locationPulse {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2); /* Adjust the scaling as needed for the pulsing effect */
+  }
+}
+
+.location-outline {
+  width: 60px; /* Adjust the width as needed */
+  height: 60px; /* Adjust the height as needed */
+  border: 2px solid #FF5733; /* Border color and width, adjust as needed */
+  border-radius: 50%; /* Make it round */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto; /* Center horizontally */
+}
+.google-maps-link {
+    font-size: 16px; /* Adjust font size as needed */
+    font-weight: bold; /* Use bold font style */
+    color: #003366; /* Dark blue color, adjust as needed */
+    text-decoration: none; /* Remove underlines */
+    padding: 5px 10px; /* Add padding for better presentation */
+    border: 2px solid #003366; /* Add border for a button-like appearance */
+    border-radius: 5px; /* Rounded corners */
+    display: inline-block; /* Make it inline-block to respect width and height settings */
+}
+
+.google-maps-link:hover {
+    background-color: #003366; /* Dark blue background color on hover */
+    color: white; /* White text color on hover */
         }
-
-        /* Search bar styles (centered) */
-        .search-bar {
-            text-align: center;
-            margin: 0 auto;
-        }
-
-        .search-bar input[type="text"] {
-            width: 200px;
-            padding: 5px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-        }
-
-        .search-bar button {
-            padding: 5px 10px;
-            font-size: 16px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        /* Today's day and time styles (top right) */
-        .day-time {
-            text-align: left;
-            padding-left: 20px;
-        }
-    .weather-info {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 16px;
-    margin-top: 10px;
-}
-
-.weather-info p {
-    margin: 5px;
-}
-
-.temp::before {
-    content: "🌡️ ";
-}
-
-.pressure::before {
-    content: "🌫️ ";
-}
-
-.humidity::before {
-    content: "💧 ";
-}
-
-.sunrise::before {
-    content: "🌅 ";
-}
-
-.sunset::before {
-    content: "🌇 ";
-}
-
-.description::before {
-    content: "🌦️ ";
-}
-
-.wind-speed::before {
-    content: "🌬️ ";
-}
-
-.wind-direction::before {
-    content: "🧭 ";
-}
-
-.watermark {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    font-size: 14px;
-    color: rgba(0, 0, 0, 0.5); /* Adjust the color and opacity as needed */
-}
-
-.copyright {
-            background-color: #ADD8E6;/* Bluish-yellow background color */
-  color: #333; /* Text color */ /* Text color */
-  bottom: 10px;
-  text-align: center; /* Center-align the text */
-  padding: 10px; /* Add padding for spacing */
-  font-family: Arial, Helvetica, sans-serif; /* Font family */
-}
-
-.copyright p {
-  margin: 0; /* Remove default margin for the paragraph */
+        .bold-text {
   font-weight: bold;
 }
 
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
+      </style>
+    <title>Weather.NAI</title>
+    <link rel="stylesheet" href="style.css">
 
-/* Apply flexbox layout to the body for sticky footer */
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Ensure the body takes at least the full viewport height */
-}
+</head>
+<body class="bg-blue-300">
 
-.coordinates {
-            font-size: 18px; /* Adjust the font size as needed */
-            color: #333; /* Text color */
-            text-align: center; /* Center align the text */
-            margin-top: 10px; /* Add top margin for spacing */
-        }
+    <header
+        class="h-16 md:h-20 flex flex-col mb-3 md:mb-0 md:flex-row justify-between md:p-3 items-center md:mx-3 font-thin">
+        <h1 class="weather-emoji block mb-3 md:mb-0  text-xl font-medium">AkashVani ☀️</h1>
+        <form id="weatherForm" class="w-96 text-center">
+            <div class="search-bar w-[24rem] md:w-[25rem] h-11 font-thin ">
+                <input type="text" id="cityInput" name="city" required placeholder="Enter City"
+                    class="border border-blue-900 w-64 md:w-72 h-11 outline-0 border-0 p-1 text-blue-500 text-xl">
+                <button
+                    class="border border-white h-11 w-fit md:p-1 text-white hover:border-blue-300 hover:bg-white hover:text-black ease-in-out duration-500 delay-75 animate-pulse"
+                    type="submit"><span class="btn-text bold-text">Get Weather</span>
+                </button>
+            </div>
+        </form>
+    </header>
 
-        /* Style for emoji */
-        .emoji {
-            font-size: 24px; /* Adjust the font size for the emoji */
-            margin-left: 5px; /* Add left margin for spacing between text and emoji */
-        }
-        .content {
-            flex-grow: 1; /* Allow content to grow and push footer down */
-        }
+    <main class="min-h-screen flex flex-col justify-between">
 
-
-</style>
-<body>
-    <div class="content">
-        <div class="navbar">
-            <h1 class="weather-emoji">AkashVani ☀️</h1>
-            <form id="weatherForm">
-                <div class="search-bar">
-                    <input type="text" id="cityInput" name="city" required placeholder="Enter City">
-                    <button type="submit">Get Weather</button>
+        <!-- Banner Block -->
+        <div class="weather-info relative h-72 md:h-96 w-[80vw] md:w-[90vw] mx-auto m-5">
+            <img id="weather-bg" src="./assets/scatteredCloud.jpg" class="weatherBg bg-center h-full w-full rounded-xl"
+                style="height: 110%;" />
+            <div id="weatherResult">
+                <div
+                    class="absolute top-[30%] md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-semibold text-4xl md:text-7xl font-thin">
+                    <div class="text-center">
+                        <h1 class="city_name">Mumbai</h1>
+                        <h1 class="text-3xl md:text-5xl mt-3">29.99 °C | 303.14 K</h1>
+                    </div>
                 </div>
-            </form>
-            <div class="day-time" id="dayTime"></div>
+            </div>
         </div>
-        <div id="weatherResult" class="weather-info"></div>
-    </div>
 
-    <script>
-        document.getElementById("weatherForm").addEventListener("submit", function(event) {
-            event.preventDefault();
+        <!-- Time Block -->
+        <div class="border mt-[60px] mx-auto border-red-900 day-time text-xl text-white md:w-fit shadow-2xl drop-shadow-2xl decoration-4 border border-white p-1"
+            id="dayTime">
+        </div>
 
-            const city = document.getElementById("cityInput").value;
-            const weatherResult = document.getElementById("weatherResult");
+        <div id="weatherResultDetail mb-5">
 
-            fetch(`https://akashvani.onrender.com/weather/${city}`)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data)
-                    const latitudeWithEmoji = `Latitude: ${data.Coord.Lat} 🌐`;
-                    const longitudeWithEmoji = `Longitude: ${data.Coord.Lon} 🌏`;
-                    weatherResult.innerHTML = `
-                        <h2>Weather in ${city}</h2>
-                        <p class="temp">Temperature: ${data.Main.Celsius} &deg;C  |  ${data.Main.Temp} K</p>
-                        <p class= "pressure">Pressure: ${data.Main.Pressure} mm</p>
-                        <p class="humidity">Humidity: ${data.Main.Humidity}%</p>
-                        <p class= "sunrise">Sunrise: ${data.Sys.SunriseTime}</p>
-                        <p class="sunset">Sunset: ${data.Sys.SunsetTime}</p>
-                        <p class = "description">Weather: ${data.Weather[0].Description}</p>
-                        <p class="wind-speed">Wind Speed: ${data.Wind.Speed} km/h</p>
-                        <p class= "wind-direction">Wind Direction: ${data.Wind.Deg}&deg</p>
-                        <p class="coordinates">${latitudeWithEmoji}</p>
-                        <p class="coordinates">${longitudeWithEmoji}</p>
+            <!-- Ravi's Additon -->
+            <div style="text-align: center;" class="mt-10">
+                <div class="google-maps-link">
+                    <div class="location-gif location-outline"></div>
+                    <a id="location_URL" href="https://maps.google.com/?q=mumbai,india" target="_blank"
+                        rel="noopener noreferrer" style="text-align: center;">
+                        Open in Google Maps
+                    </a>
+                </div>
+            </div>
 
-                    `;
+            <div class="flex flex-col md:flex-row w-full justify-evenly items center p-3 text-md font-medium">
+                <div onclick="copyLatti()"
+                    class="drop-shadow-2xl w-full md:w-[13%] m-1 font-thin p-2 rounded-xl bg-white cursor-pointer">
+                    <div class="flex-row w-full flex justify-between">
+                        <p class="text-md">Latitude </p>
+                        <!-- copy icon -->
+                        <img class="max-w-[10%] md:max-w-[15%] copy_logo_latt"
+                            src="https://static.vecteezy.com/system/resources/thumbnails/000/423/339/small/Multimedia__2850_29.jpg"
+                            alt="Copy" />
+                    </div>
+                    <p class="temp p-1 text-2xl font-thin latti">11.22.12 </p>
+                </div>
+                <div onclick="copyLon()"
+                    class="drop-shadow-2xl w-full md:w-[13%] m-1  font-thin p-2 rounded-xl bg-white cursor-pointer">
+                    <div class="flex-row w-full flex justify-between">
+                        <p class="text-md">Longitude </p>
+                        <!-- copy icon -->
+                        <img class="max-w-[10%] md:max-w-[15%] copy_logo_lon"
+                            src="https://static.vecteezy.com/system/resources/thumbnails/000/423/339/small/Multimedia__2850_29.jpg"
+                            alt="Copy" />
+                    </div>
+                    <p class="temp p-1 text-2xl font-thin longi">22.32.12 </p>
+                </div>
+                <div class="drop-shadow-2xl w-full md:w-[13%] m-1  font-thin p-2 rounded-xl bg-white">
+                    <p class="text-md">Weather 🌧️</p>
+                    <p class="temp p-1 text-2xl font-thin weather">Cloudy </p>
+                </div>
+                <div class="drop-shadow-2xl w-full md:w-[13%]  font-thin m-1 p-2 rounded-xl bg-white">
+                    <p class="text-md">Pressure 🦾</p>
+                    <p class=" p-1  text-2xl font-thin pressure">10 mm </p>
+                </div>
+                <div class="drop-shadow-2xl w-full md:w-[13%]  font-thin m-1 p-2 rounded-xl bg-white">
+                    <p class="text-md">Humidity 💦</p>
+                    <p class=" p-1  text-2xl font-thin humidity">10% </p>
+                </div>
+                <div class="drop-shadow-2xl w-full md:w-[13%]  font-thin m-1 p-2 rounded-xl bg-white">
+                    <p class="text-md">Wind Speed 🍃</p>
+                    <p class=" p-1  text-2xl font-thin speed">10 km/hr </p>
+                </div>
+                <div class="drop-shadow-2xl w-full md:w-[13%]  font-thin m-1 p-1 rounded-xl bg-white">
+                    <p class="text-md">Wind Direction ↗️</p>
+                    <p class=" p-1  text-2xl font-thin direction"> 220 &deg; </p>
+                </div>
+                <div class="drop-shadow-2xl w-full md:w-[13%]  font-thin m-1 p-1 rounded-xl bg-white">
+                    <p class="text-md">Sunrise 🌅</p>
+                    <p class=" p-1  text-2xl font-thin rise">06:20 AM </p>
+                </div>
+                <div class="drop-shadow-2xl w-full md:w-[13%]  font-thin m-1 p-1 rounded-xl bg-white">
+                    <p class="text-md ">Sunset 🌄</p>
+                    <p class=" p-1 text-2xl font-thin set">06:26 PM </p>
+                </div>
+            </div>
+        </div>
+    </main>
 
-                })
-                .catch(error => {
-                    console.error("Error:", error);
-                    console.log(error.message + "hiiiiiiiiii")
-                    weatherResult.innerHTML = "An error occurred while fetching weather data.";
-                });
-        });
+    <footer class="border bottom-0 border-white text-white font-thin text-xl  h-16 md:h-11 items-center relative">
+        <div class="copyright text-shadow-md w-full text-center ">
+            <p>&copy; 2023 B$C | Northern AI | All rights reserved</p>
+        </div>
+    </footer>
 
-        function updateDayTime() {
-            const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
-            const formattedDate = now.toLocaleDateString('en-US', options);
-            document.getElementById("dayTime").textContent = formattedDate;
-        }
-
-        updateDayTime();
-        setInterval(updateDayTime, 1000);
-
-
-        
-    </script>
-    <div class="watermark">
-        Powered by OpenWeather
-    </div>
-    <footer class="copyright">
-        <p>&copy; 2023 B$C | Northern AI | All rights reserved</p>
-      </footer>
+    <script defer src="./script.js"></script>
 </body>
 </html>

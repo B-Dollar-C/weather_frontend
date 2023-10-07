@@ -11,6 +11,7 @@ const sunrise = document.querySelector(".rise");
 const sunset = document.querySelector(".set");
 const state = document.querySelector(".btn-text");
 const cityName = document.querySelector(".city_name");
+const location_URL = document.querySelector("#location_URL");
 if (Form) {
     Form.addEventListener("submit", function (event) {
         event.preventDefault();
@@ -19,6 +20,7 @@ if (Form) {
         const weatherResult = document.getElementById("weatherResult");
         const weatherResultDetail = document.getElementById("weatherResultDetail");
         const weatherBg = document.getElementById("weather-bg");
+
 
         fetch(`https://akashvani.onrender.com/weather/${city}`)
             .then(response => response.json())
@@ -34,6 +36,7 @@ if (Form) {
                 direction.innerHTML = data.Wind.Deg;
                 sunrise.innerHTML = data.Sys.SunriseTime;
                 sunset.innerHTML = data.Sys.SunsetTime;
+                location_URL.href = `https://maps.google.com/?q=${data.Name}`;
 
                 // dynamic bg 
                 let url = '';

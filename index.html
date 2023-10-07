@@ -73,8 +73,9 @@
 </head>
 <body class="bg-blue-300">
 
-    <header class="h-16 md:h-20 flex flex-row justify-between md:p-3 items-center md:mx-3 font-thin">
-        <h1 class="weather-emoji hidden  md:block  text-xl font-medium">AkashVani ☀️</h1>
+    <header
+        class="h-16 md:h-20 flex flex-col mb-3 md:mb-0 md:flex-row justify-between md:p-3 items-center md:mx-3 font-thin">
+        <h1 class="weather-emoji block mb-3 md:mb-0  text-xl font-medium">AkashVani ☀️</h1>
         <form id="weatherForm" class="w-96 text-center">
             <div class="search-bar w-[24rem] md:w-[25rem] h-11 font-thin ">
                 <input type="text" id="cityInput" name="city" required placeholder="Enter City"
@@ -115,7 +116,7 @@
             <div style="text-align: center;" class="mt-10">
                 <div class="google-maps-link">
                     <div class="location-gif location-outline"></div>
-                    <a href="https://maps.google.com/?q=mumbai,india" target="_blank" rel="noopener noreferrer"
+                    <a id="location_URL" href="https://maps.google.com/?q=mumbai,india" target="_blank" rel="noopener noreferrer"
                         style="text-align: center;">
                         Open in Google Maps
                     </a>
@@ -123,20 +124,23 @@
             </div>
 
             <div class="flex flex-col md:flex-row w-full justify-evenly items center p-3 text-md font-medium">
-                <!-- should be replaced by dynamic data -->
                 <div onclick="copyLatti()"
                     class="drop-shadow-2xl w-full md:w-[13%] m-1 font-thin p-2 rounded-xl bg-white cursor-pointer">
                     <div class="flex-row w-full flex justify-between">
-                     <p class="text-md">Latitude </p>
-                     <img class="max-w-[10%] md:max-w-[15%]" src="https://static.vecteezy.com/system/resources/thumbnails/000/423/339/small/Multimedia__2850_29.jpg" alt="Copy"/>
+                        <p class="text-md">Latitude </p>
+                        <img class="max-w-[10%] md:max-w-[15%]"
+                            src="https://static.vecteezy.com/system/resources/thumbnails/000/423/339/small/Multimedia__2850_29.jpg"
+                            alt="Copy" />
                     </div>
                     <p class="temp p-1 text-2xl font-thin latti">11.22.12 </p>
                 </div>
                 <div onclick="copyLon()"
                     class="drop-shadow-2xl w-full md:w-[13%] m-1  font-thin p-2 rounded-xl bg-white cursor-pointer">
                     <div class="flex-row w-full flex justify-between">
-                    <p class="text-md">Longitude </p>
-                    <img  class="max-w-[10%] md:max-w-[15%]"  src="https://static.vecteezy.com/system/resources/thumbnails/000/423/339/small/Multimedia__2850_29.jpg" alt="Copy"/>
+                        <p class="text-md">Longitude </p>
+                        <img class="max-w-[10%] md:max-w-[15%]"
+                            src="https://static.vecteezy.com/system/resources/thumbnails/000/423/339/small/Multimedia__2850_29.jpg"
+                            alt="Copy" />
                     </div>
                     <p class="temp p-1 text-2xl font-thin longi">22.32.12 </p>
                 </div>
@@ -175,11 +179,6 @@
     <footer class="border bottom-0 border-white text-white font-thin text-xl  h-16 md:h-11 items-center relative">
         <div class="copyright text-shadow-md w-full text-center ">
             <p>&copy; 2023 B$C | Northern AI | All rights reserved</p>
-        </div>
-        <div class="watermark text-shadow-md absolute right-5 bottom-0 md:bottom-3">
-            <p class="text-sm text-gray-500">
-                Powered by OpenWeather
-            </p>
         </div>
     </footer>
 

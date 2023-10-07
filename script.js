@@ -32,6 +32,8 @@ if (Form) {
                 // dynamic data load
                 cel.innerHTML = data.Main.Celsius;
                 kel.innerHTML = data.Main.Temp;
+                 document.getElementById("temperature").textContent =  cel.innerHTML.toFixed(2) + " °C";
+                 document.getElementById("kelvin").textContent = kel.innerHTML.toFixed(1) + " K";
                 cityName.innerHTML = data.Name;
                 latti.innerHTML = data.Coord.Lat;
                 longi.innerHTML = data.Coord.Lon;

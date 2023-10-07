@@ -1,4 +1,6 @@
 const Form = document.getElementById("weatherForm");
+const cel = document.querySelector(".cel");
+const kel = document.querySelector(".kel");
 
 const latti = document.querySelector(".latti");
 const longi = document.querySelector(".longi");
@@ -28,6 +30,8 @@ if (Form) {
             .then(response => response.json())
             .then(data => {
                 // dynamic data load
+                cel.innerHTML = data.Main.Celsius;
+                kel.innerHTML = data.Main.Temp;
                 cityName.innerHTML = data.Name;
                 latti.innerHTML = data.Coord.Lat;
                 longi.innerHTML = data.Coord.Lon;

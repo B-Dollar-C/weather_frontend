@@ -30,7 +30,7 @@ if (Form) {
             .then(response => response.json())
             .then(data => {
                 // dynamic data load
-                kel.innerHTML = data.Main.Temp;
+                kel.innerText = data.Main.Temp;
                 cel.innerHTML = data.Main.Celsius;
                 cityName.innerHTML = data.Name;
                 latti.innerHTML = data.Coord.Lat;
